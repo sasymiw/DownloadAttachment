@@ -1,0 +1,20 @@
+<template>
+	<!-- <div class="slds-grid">
+		<div class="slds-col" style="width: 60%;">
+			<lightning-card title="Contact Detail" variant="Narrow" iconname="standard:contact">
+				<lightning-record-form record-id="0035I000004LDloQAG" object-api-name="Contact" layout-type="Full"
+					mode="view">
+				</lightning-record-form>
+			</lightning-card>
+		</div>
+		<div class="slds-col" style="width: 20%;">
+		</div>-->
+	<div class="slds-col" style="width: 100%;">
+		<lightning-card title="Account Contact Relationships" variant="Narrow" icon-name="standard:account">
+			<lightning-datatable columns={columns} data={data} key-field=" id" hide-checkbox-column="true"
+				show-row-number-column="true">
+			</lightning-datatable>
+		</lightning-card>
+	</div>
+	<!--</div>-->
+</template>
