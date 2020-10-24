@@ -5,7 +5,7 @@ public with sharing class DownloadAttachment {
 		try {
 			System.debug('This is the recordId that i retrieved: ' + recordId);
 			Map<String, attachment> mapAttachments = new Map<String, Attachment>();
-			List<Attachment> attachments = [SELECT ID
+			List<Attachment> attachments = [SELECT ID, Name
 											FROM Attachment
 											WHERE ParentId =: recordId];
 			System.debug('These are the Attachments  i retrieved: ' + JSON.serializePretty(attachments));
@@ -31,7 +31,7 @@ public with sharing class DownloadAttachment {
 		try {
 			System.debug('This is the recordId that i retrieved: ' + recordId);
 			Map<String, ContentVersion> mapVersions = new Map<String, ContentVersion>();
-			List<ContentVersion> contentVersions = [SELECT ID, VersionData
+			List<ContentVersion> contentVersions = [SELECT ID, Title
 													FROM ContentVersion
 													WHERE FirstPublishLocationId =: recordId AND isLatest = true];
 			System.debug('These are the content versions i retrieved: ' + JSON.serializePretty(contentVersions));

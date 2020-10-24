@@ -2,7 +2,7 @@
 	<lightning-button variant="brand" label="Download Attachment" title="Primary action" onclick={openModal}
 		class="slds-m-left_x-small">
 	</lightning-button>
-	<template if:true={isModalOpen}>
+	<template if:true={isModalOpen} id="modalOpen">
 		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
 			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
 			<div class="slds-modal__container">
@@ -18,16 +18,24 @@
 				</header>
 				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
 					<lightning-tabset>
-						<lightning-tab label="tableone">
-							<lightning-datatable key-field="id" data={dataForAttachment} columns={columnsForAttachment}>
+						<lightning-tab label="Attachments">
+							<lightning-datatable data-id="attachmentsTable" key-field="Id" data={dataForAttachment}
+								columns={columnsForAttachment} onrowselection={getSelectedName}>
+							</lightning-datatable>
+						</lightning-tab>
+						<lightning-tab label="Content Documents">
+							<lightning-datatable data-id="contentsTable" key-field="id" data={dataForVersion}
+								columns={columnsForVersion} onrowselection={getSelectedNameVersions}>
 							</lightning-datatable>
 						</lightning-tab>
 					</lightning-tabset>
 				</div>
 				<footer class="slds-modal__footer">
 					<button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
-					<button class="slds-button slds-button_brand" onclick={submitDetails}
-						title="Download">Download</button>
+					<button class="slds-button slds-button_brand" title="Download"
+						onclick={downloadContentVersionsAsZip}>Download</button>
+					<button class="slds-button slds-button_neutral" onclick={onClickDownload}
+						title="onClickDownload">onClickDownload</button>
 				</footer>
 			</div>
 		</section>

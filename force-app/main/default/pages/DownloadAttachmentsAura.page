@@ -1,0 +1,43 @@
+<apex:page showHeader="false" standardStylesheets="false">
+	<script>
+		/*(async () => {
+			try {
+				/*var url = '/';
+				for (let i = 0; i < this.selectedVersions.length; i++) {
+					url += this.selectedVersions[i].Id + '/';
+				}
+				url = url.substring(0, url.length - 1);
+				url += '?';
+				console.log('updated code');*/
+		/*let blob = await fetch("https://sm-org-2-dev-ed.lightning.force.com/sfc/servlet.shepherd/version/download/0685I000002u0wNQAQ").then(r => r.blob());
+		console.log('This is the type of blob : ' + typeof blob.name);
+		//download("data: text / html, HelloWorld", "helloWorld.txt");
+		//window.open('https://sm-org-2-dev-ed.lightning.force.com/sfc/servlet.shepherd/version/download/' + url)
+	} catch (error) {
+		console.log('Entered in error');
+	} finally {
+		console.log('Entered in finally');
+	}
+})();*/
+	</script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function () {
+			$("#btn").click(function (event) {
+				$.getJSON('https://sm-org-2-dev-ed.lightning.force.com/sfc/servlet.shepherd/version/download/0685I000002u0wNQAQ', function (jd) {
+					$('#stage').html('<p> Name: ' + jd.description + '</p>');
+				});
+			});
+
+		});
+	</script>
+
+	<body>
+		<p>Simple JSON File to show the Demo .</p>
+		<div id="stage" style="background-color:#cc0;">
+			Data Will be loaded
+		</div>
+		<input type="button" id="btn" value="Load Data" />
+	</body>
+</apex:page>
