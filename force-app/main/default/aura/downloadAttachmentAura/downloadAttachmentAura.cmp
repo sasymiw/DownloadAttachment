@@ -1,5 +1,5 @@
 <aura:component
-	implements="force:lightningQuickActionWithoutHeader, flexipage:availableForAllPageTypes, force:hasRecordId">
+	implements="force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,force:hasRecordId">
 	<aura:attribute name="recordId" type="String" />
 	<c:downloadAttachment recordId="{!v.recordId}"></c:downloadAttachment>
 </aura:component>
